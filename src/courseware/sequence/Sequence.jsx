@@ -32,6 +32,7 @@ function Sequence({
   prerequisite,
   showCompletion,
   unitIds,
+  verifiedMode,
 }) {
   const handleNext = () => {
     const nextIndex = unitIds.indexOf(activeUnitId) + 1;
@@ -124,6 +125,9 @@ function Sequence({
         showCompletion={showCompletion}
         unitIds={unitIds}
       />
+      <div>
+        FUNK: {verifiedMode}
+      </div>
       <div className="flex-grow-1">
         {isGated && (
           <Suspense
@@ -213,11 +217,19 @@ Sequence.propTypes = {
     id: PropTypes.string,
   }).isRequired,
   unitIds: PropTypes.arrayOf(PropTypes.string).isRequired,
+  verifiedMode: PropTypes.shape({
+    price: PropTypes.number.isRequired,
+    currency: PropTypes.string.isRequired,
+    currencySymbol: PropTypes.string,
+    sku: PropTypes.string.isRequired,
+    upgradeUrl: PropTypes.string.isRequired,
+  }),
 };
 
 Sequence.defaultProps = {
   onNavigateUnit: null,
   bannerText: undefined,
+  verifiedMode: null,
 };
 
 export default injectIntl(Sequence);

@@ -32,6 +32,7 @@ function SequenceContainer(props) {
     items,
     lmsWebUrl,
     models,
+    verifiedMode,
   } = props;
   const loaded = fetchState === 'loaded';
 
@@ -100,6 +101,7 @@ function SequenceContainer(props) {
             }}
             showCompletion={showCompletion}
             unitIds={unitIds}
+            verifiedMode={verifiedMode}
           />
         )}
       </div>
@@ -141,6 +143,13 @@ SequenceContainer.propTypes = {
   showCompletion: PropTypes.bool,
   isTimeLimited: PropTypes.bool,
   bannerText: PropTypes.string,
+  verifiedMode: PropTypes.shape({
+    price: PropTypes.number.isRequired,
+    currency: PropTypes.string.isRequired,
+    currencySymbol: PropTypes.string,
+    sku: PropTypes.string.isRequired,
+    upgradeUrl: PropTypes.string.isRequired,
+  }),
 };
 
 SequenceContainer.defaultProps = {
@@ -155,6 +164,7 @@ SequenceContainer.defaultProps = {
   bannerText: undefined,
   savePosition: undefined,
   items: [],
+  verifiedMode: null,
 };
 
 export default connect(
