@@ -127,6 +127,33 @@ function Sequence({
       />
       <div>
         FUNK: {verifiedMode}
+        <table>
+          <tr>
+            <td>
+              verifiedMode.price
+            </td>
+          </tr>
+          <tr>
+            <td>
+              verifiedMode.currency
+            </td>
+          </tr>
+          <tr>
+            <td>
+              verifiedMode.currencySymbol
+            </td>
+          </tr>
+          <tr>
+            <td>
+              verifiedMode.sku
+            </td>
+          </tr>
+          <tr>
+            <td>
+              verifiedMode.upgradeUrl
+            </td>
+          </tr>
+        </table>
       </div>
       <div className="flex-grow-1">
         {isGated && (
