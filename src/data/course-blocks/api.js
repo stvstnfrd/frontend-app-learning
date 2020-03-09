@@ -7,7 +7,7 @@ export async function getCourseBlocks(courseUsageKey) {
   url.searchParams.append('course_id', courseUsageKey);
   url.searchParams.append('username', username);
   url.searchParams.append('depth', 3);
-  url.searchParams.append('requested_fields', 'children,show_gated_sections');
+  url.searchParams.append('requested_fields', 'children,show_gated_sections,graded');
 
   const { data } = await getAuthenticatedHttpClient().get(url.href, {});
   // Camelcase block objects (leave blockId keys alone)

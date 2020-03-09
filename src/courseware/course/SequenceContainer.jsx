@@ -15,6 +15,7 @@ function SequenceContainer(props) {
   const {
     courseUsageKey,
     courseId,
+    enrollmentMode,
     sequenceId,
     unitId,
     intl,
@@ -31,6 +32,8 @@ function SequenceContainer(props) {
     items,
     lmsWebUrl,
     models,
+    graded,
+    verifiedMode,
   } = props;
   const loaded = fetchState === 'loaded';
 
@@ -85,6 +88,8 @@ function SequenceContainer(props) {
           bannerText={bannerText}
           courseUsageKey={courseUsageKey}
           displayName={displayName}
+          enrollmentMode={enrollmentMode}
+          graded={graded}
           isFirstUnit={isFirstUnit}
           isGated={gatedContent.gated}
           isLastUnit={isLastUnit}
@@ -97,6 +102,7 @@ function SequenceContainer(props) {
           }}
           showCompletion={showCompletion}
           unitIds={unitIds}
+          verifiedMode={verifiedMode}
         />
       )}
     </div>
@@ -137,6 +143,15 @@ SequenceContainer.propTypes = {
   showCompletion: PropTypes.bool,
   isTimeLimited: PropTypes.bool,
   bannerText: PropTypes.string,
+  enrollmentMode: PropTypes.string,
+  graded: PropTypes.bool,
+  verifiedMode: PropTypes.shape({
+    price: PropTypes.number.isRequired,
+    currency: PropTypes.string.isRequired,
+    currencySymbol: PropTypes.string,
+    sku: PropTypes.string.isRequired,
+    upgradeUrl: PropTypes.string.isRequired,
+  }),
 };
 
 SequenceContainer.defaultProps = {
@@ -150,7 +165,10 @@ SequenceContainer.defaultProps = {
   isTimeLimited: undefined,
   bannerText: undefined,
   savePosition: undefined,
+  enrollmentMode: undefined,
   items: [],
+  graded: false,
+  verifiedMode: null,
 };
 
 export default connect(

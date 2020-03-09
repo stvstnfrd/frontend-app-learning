@@ -20,6 +20,8 @@ function Sequence({
   bannerText,
   courseUsageKey,
   displayName,
+  enrollmentMode,
+  graded,
   intl,
   isFirstUnit,
   isGated,
@@ -30,6 +32,7 @@ function Sequence({
   prerequisite,
   showCompletion,
   unitIds,
+  verifiedMode,
 }) {
   const handleNext = () => {
     const nextIndex = unitIds.indexOf(activeUnitId) + 1;
@@ -141,9 +144,12 @@ function Sequence({
         )}
         {!isGated && (
           <Unit
+            enrollmentMode={enrollmentMode}
+            graded={graded}
             key={activeUnitId}
             id={activeUnitId}
             onLoaded={handleUnitLoaded}
+            verifiedMode={verifiedMode}
           />
         )}
         {unitHasLoaded && (
@@ -170,6 +176,8 @@ Sequence.propTypes = {
   bannerText: PropTypes.string,
   courseUsageKey: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
+  enrollmentMode: PropTypes.string,
+  graded: PropTypes.bool,
   intl: intlShape.isRequired,
   isFirstUnit: PropTypes.bool.isRequired,
   isGated: PropTypes.bool.isRequired,
@@ -183,11 +191,21 @@ Sequence.propTypes = {
     id: PropTypes.string,
   }).isRequired,
   unitIds: PropTypes.arrayOf(PropTypes.string).isRequired,
+  verifiedMode: PropTypes.shape({
+    price: PropTypes.number.isRequired,
+    currency: PropTypes.string.isRequired,
+    currencySymbol: PropTypes.string,
+    sku: PropTypes.string.isRequired,
+    upgradeUrl: PropTypes.string.isRequired,
+  }),
 };
 
 Sequence.defaultProps = {
   onNavigateUnit: null,
   bannerText: undefined,
+  enrollmentMode: undefined,
+  graded: false,
+  verifiedMode: null,
 };
 
 export default injectIntl(Sequence);

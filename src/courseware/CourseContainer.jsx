@@ -67,6 +67,7 @@ function CourseContainer(props) {
               models={models}
               tabs={props.metadata.tabs}
               verifiedMode={props.metadata.verifiedMode}
+              enrollmentMode={props.metadata.enrollmentMode}
             />
           );
         }

@@ -29,6 +29,7 @@ export default function Course({
   tabs,
   unitId,
   verifiedMode,
+  enrollmentMode,
 }) {
   const nextSequenceHandler = useCallback(() => {
     const sequenceIds = createSequenceIdList(models, courseId);
@@ -94,13 +95,15 @@ export default function Course({
           key={sequenceId}
           courseUsageKey={courseUsageKey}
           courseId={courseId}
+          enrollmentMode={enrollmentMode}
           sequenceId={sequenceId}
           unitId={unitId}
           models={models}
           onNext={nextSequenceHandler}
           onPrevious={previousSequenceHandler}
+	  verifiedMode={verifiedMode}
         />
-        {verifiedMode && <CourseSock verifiedMode={verifiedMode} />}
+        {verifiedMode && enrollmentMode === 'audit' && <CourseSock verifiedMode={verifiedMode} />}
       </div>
     </>
   );
