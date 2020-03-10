@@ -102,6 +102,13 @@ function Sequence({
     setUnitHasLoaded(false);
   }, [activeUnitId]);
 
+  const vm = verifiedMode || {};
+  vm.upgradeUrl = 'https://edx.org';
+  vm.price = 20;
+  vm.currencySymbol = '$';
+  vm.sku = '8675309';
+  vm.currency = 'USD';
+
   return (
     <>
       <SequenceNavigation
@@ -129,14 +136,14 @@ function Sequence({
         <h4>Verified Track Access</h4>
         <p>
           Graded assessments are available to Verified Track learners.
-          <a href="{verifiedMode.upgradeUrl}">
+          <a href="{vm.upgradeUrl}">
             Upgrade to unlock
-            ({verifiedMode.currencySymbol}{verifiedMode.price})
+            ({vm.currencySymbol}{vm.price})
           </a>
         </p>
         <ul>
-          <li>{verifiedMode.currency}</li>
-          <li>{verifiedMode.sku}</li>
+          <li>{vm.currency}</li>
+          <li>{vm.sku}</li>
         </ul>
       </div>
       <div className="flex-grow-1">
