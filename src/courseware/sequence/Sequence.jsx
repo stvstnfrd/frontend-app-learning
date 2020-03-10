@@ -128,16 +128,16 @@ function Sequence({
       <div>
         <h4>Verified Track Access</h4>
         <p>
-          {
-            // currency
-            // sku
-          }
           Graded assessments are available to Verified Track learners.
           <a href="{verifiedMode.upgradeUrl}">
             Upgrade to unlock
             ({verifiedMode.currencySymbol}{verifiedMode.price})
           </a>
         </p>
+        <ul>
+          <li>{verifiedMode.currency}</li>
+          <li>{verifiedMode.sku}</li>
+        </ul>
       </div>
       <div className="flex-grow-1">
         {isGated && (
