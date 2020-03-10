@@ -126,34 +126,18 @@ function Sequence({
         unitIds={unitIds}
       />
       <div>
-        FUNK: {verifiedMode}
-        <table>
-          <tr>
-            <td>
-              verifiedMode.price
-            </td>
-          </tr>
-          <tr>
-            <td>
-              verifiedMode.currency
-            </td>
-          </tr>
-          <tr>
-            <td>
-              verifiedMode.currencySymbol
-            </td>
-          </tr>
-          <tr>
-            <td>
-              verifiedMode.sku
-            </td>
-          </tr>
-          <tr>
-            <td>
-              verifiedMode.upgradeUrl
-            </td>
-          </tr>
-        </table>
+        <h4>Verified Track Access</h4>
+        <p>
+          {
+            // currency
+            // sku
+          }
+          Graded assessments are available to Verified Track learners.
+          <a href="{verifiedMode.upgradeUrl}">
+            Upgrade to unlock
+            ({verifiedMode.currencySymbol}{verifiedMode.price})
+          </a>
+        </p>
       </div>
       <div className="flex-grow-1">
         {isGated && (
