@@ -125,6 +125,12 @@ function Sequence({
         showCompletion={showCompletion}
         unitIds={unitIds}
       />
+      <div class="course-expiration-message">
+        <h4>Audit Access Expires DATETIME</h4>
+        <p>
+          You lose all access to this course, including your progress, on DATETIME.
+        </p>
+      </div>
       <div className="unit-container flex-grow-1">
         {isGated && (
           <Suspense
